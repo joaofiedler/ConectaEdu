@@ -14,17 +14,28 @@ Antes de começar, verifique se você possui instalado:
 
 ## ⚙️ Passo a passo
 
-1. **Clone este repositório:**
+### 1. **Clone este repositório:**
+   ```yaml
    git clone https://github.com/joaofiedler/ConectaEdu.git
-   
-2. **Acesse a pasta do projeto:**
+   ```
+
+### 2. **Acesse a pasta do projeto:**
+   ```yaml
    cd ConectaEdu
+   ```
 
-3. **Instale as dependências:**
+### 3. **Acesse a pasta do projeto:**
+   ```yaml
    npm install
+   ```
 
-4. **Inicie o servidor:**
+### 4. **Inicie o servidor:**
+   ```yaml
    node index.js
+   ```
 
-5. **Abra o navegador e acesse:**
+### 5. **Abra o navegador e acesse:**
+   ```yaml
    http://localhost:3000
+   ```
+
