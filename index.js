@@ -23,7 +23,7 @@ app.get('/registro', redirecionarSeLogado, (req, res) => {
 });
 
 app.post('/registro', async (req, res) => {
-    const cliente = new MongoClient(urlMongo, { useUnifiedTopology: true })
+    const cliente = new MongoClient(urlMongo)
     try {
         await cliente.connect();
         const banco = cliente.db(nomeBanco);
@@ -58,7 +58,7 @@ app.get('/', (req, res) => {
 });
 
 app.post('/login', async (req, res) => {
-    const cliente = new MongoClient(urlMongo, { useUnifiedTopology: true});
+    const cliente = new MongoClient(urlMongo);
     try {
         await cliente.connect();
         const banco = cliente.db(nomeBanco);
@@ -111,6 +111,62 @@ app.get('/plataforma', protegerRota, (req, res) => {
     res.sendFile(__dirname + '/views/plataforma.html');
 });
 
+// Nova rota para a página de perfil
+app.get('/perfil', protegerRota, (req, res) => {
+    res.sendFile(__dirname + '/views/perfil.html');
+});
+
+// Rota para buscar dados do perfil
+app.get('/perfil/dados', protegerRota, async (req, res) => {
+    const cliente = new MongoClient(urlMongo);
+    try {
+        await cliente.connect();
+        const banco = cliente.db(nomeBanco);
+        const colecaoPerfis = banco.collection('perfis');
+
+        const perfil = await colecaoPerfis.findOne({ usuario: req.session.usuario });
+        
+        res.json(perfil || {});
+    } catch (erro) {
+        console.log('Erro ao buscar perfil:', erro);
+        res.status(500).json({ erro: 'Erro ao buscar dados do perfil' });
+    } finally {
+        cliente.close();
+    }
+});
+
+// Rota para atualizar dados do perfil
+app.post('/perfil/atualizar', protegerRota, async (req, res) => {
+    const cliente = new MongoClient(urlMongo);
+    try {
+        await cliente.connect();
+        const banco = cliente.db(nomeBanco);
+        const colecaoPerfis = banco.collection('perfis');
+
+        const dadosPerfil = {
+            usuario: req.session.usuario,
+            nomeCompleto: req.body.nomeCompleto,
+            email: req.body.email,
+            bio: req.body.bio,
+            instituicao: req.body.instituicao,
+            corAvatar: req.body.corAvatar,
+            dataAtualizacao: new Date()
+        };
+
+        await colecaoPerfis.updateOne(
+            { usuario: req.session.usuario },
+            { $set: dadosPerfil },
+            { upsert: true }
+        );
+
+        res.json({ sucesso: true, mensagem: 'Perfil atualizado com sucesso' });
+    } catch (erro) {
+        console.log('Erro ao atualizar perfil:', erro);
+        res.status(500).json({ erro: 'Erro ao atualizar perfil' });
+    } finally {
+        cliente.close();
+    }
+});
 
 app.get('/sair', (req,res) => {
     req.session.destroy((err) => {
@@ -129,5 +185,5 @@ app.get('/status', (req, res) => {
 });
 
 app.listen(port, () => {
-    console.log(`Servidor rodadndo em http://localhost:${port}`)
+    console.log(`Servidor rodando em http://localhost:${port}`)
 })

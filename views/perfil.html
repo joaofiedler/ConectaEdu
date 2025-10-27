@@ -1,0 +1,597 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Meu Perfil - ConectaEdu</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: -apple-system, BlinkMacSystemFont, 'SF Pro Display', 'SF Pro Text', 'Helvetica Neue', Helvetica, Arial, sans-serif;
+    }
+    
+    body {
+      background: linear-gradient(135deg, #f8f9fa, #ffffff);
+      color: #1d1d1f;
+      line-height: 1.6;
+    }
+
+    header {
+      background: rgba(255, 255, 255, 0.8);
+      backdrop-filter: blur(20px);
+      border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+      padding: 20px 0;
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      z-index: 1000;
+    }
+
+    .header-content {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 24px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .logo {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      text-decoration: none;
+      color: inherit;
+    }
+
+    .logo img {
+      width: 40px;
+      height: 40px;
+      border-radius: 10px;
+    }
+
+    .logo h1 {
+      font-size: 24px;
+      font-weight: 700;
+      color: #1d1d1f;
+    }
+
+    .user-menu {
+      position: relative;
+    }
+
+    .user-button {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      background: #ffffff;
+      border: 2px solid #e5e5e7;
+      padding: 10px 20px;
+      border-radius: 12px;
+      cursor: pointer;
+      transition: all 0.3s ease;
+    }
+
+    .user-button:hover {
+      border-color: #007aff;
+      box-shadow: 0 4px 12px rgba(0, 122, 255, 0.15);
+    }
+
+    .user-avatar {
+      width: 36px;
+      height: 36px;
+      border-radius: 50%;
+      background: #007aff;
+      color: white;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: 700;
+      font-size: 16px;
+    }
+
+    .user-name {
+      font-weight: 600;
+      color: #1d1d1f;
+    }
+
+    .dropdown-arrow {
+      font-size: 12px;
+      color: #86868b;
+      transition: transform 0.3s ease;
+    }
+
+    .user-button.active .dropdown-arrow {
+      transform: rotate(180deg);
+    }
+
+    .dropdown-menu {
+      position: absolute;
+      top: calc(100% + 8px);
+      right: 0;
+      background: #ffffff;
+      border-radius: 12px;
+      box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15);
+      border: 1px solid rgba(0, 0, 0, 0.05);
+      min-width: 220px;
+      opacity: 0;
+      visibility: hidden;
+      transform: translateY(-10px);
+      transition: all 0.3s ease;
+    }
+
+    .dropdown-menu.show {
+      opacity: 1;
+      visibility: visible;
+      transform: translateY(0);
+    }
+
+    .dropdown-item {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      padding: 14px 20px;
+      color: #1d1d1f;
+      text-decoration: none;
+      transition: background 0.2s ease;
+      border-bottom: 1px solid #f5f5f7;
+    }
+
+    .dropdown-item:first-child {
+      border-radius: 12px 12px 0 0;
+    }
+
+    .dropdown-item:last-child {
+      border-radius: 0 0 12px 12px;
+      border-bottom: none;
+      color: #ff3b30;
+    }
+
+    .dropdown-item:hover {
+      background: #f5f5f7;
+    }
+
+    main {
+      margin-top: 80px;
+      min-height: calc(100vh - 80px);
+    }
+
+    .container {
+      max-width: 800px;
+      margin: 0 auto;
+      padding: 40px 24px;
+    }
+
+    .profile-header {
+      background: #ffffff;
+      padding: 40px;
+      border-radius: 24px;
+      box-shadow: 0 20px 40px rgba(0, 0, 0, 0.08);
+      border: 1px solid rgba(0, 0, 0, 0.05);
+      text-align: center;
+      margin-bottom: 32px;
+    }
+
+    .profile-avatar-large {
+      width: 120px;
+      height: 120px;
+      border-radius: 50%;
+      background: #007aff;
+      color: white;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: 700;
+      font-size: 48px;
+      margin: 0 auto 24px;
+      position: relative;
+      cursor: pointer;
+      transition: all 0.3s ease;
+    }
+
+    .profile-avatar-large:hover {
+      transform: scale(1.05);
+      box-shadow: 0 8px 24px rgba(0, 122, 255, 0.3);
+    }
+
+    .avatar-edit-icon {
+      position: absolute;
+      bottom: 0;
+      right: 0;
+      background: #ffffff;
+      width: 36px;
+      height: 36px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border: 3px solid #007aff;
+      font-size: 16px;
+    }
+
+    .profile-header h2 {
+      font-size: 32px;
+      font-weight: 700;
+      color: #1d1d1f;
+      margin-bottom: 8px;
+    }
+
+    .profile-header p {
+      color: #86868b;
+      font-size: 16px;
+    }
+
+    .profile-section {
+      background: #ffffff;
+      padding: 32px;
+      border-radius: 20px;
+      box-shadow: 0 20px 40px rgba(0, 0, 0, 0.08);
+      border: 1px solid rgba(0, 0, 0, 0.05);
+      margin-bottom: 24px;
+    }
+
+    .profile-section h3 {
+      font-size: 24px;
+      font-weight: 700;
+      color: #1d1d1f;
+      margin-bottom: 24px;
+      padding-bottom: 16px;
+      border-bottom: 2px solid #f5f5f7;
+    }
+
+    .form-group {
+      margin-bottom: 24px;
+    }
+
+    .form-group label {
+      display: block;
+      color: #1d1d1f;
+      font-size: 14px;
+      font-weight: 600;
+      margin-bottom: 8px;
+    }
+
+    input, textarea, select {
+      width: 100%;
+      padding: 16px;
+      border: 2px solid #e5e5e7;
+      border-radius: 12px;
+      background: #ffffff;
+      color: #1d1d1f;
+      font-size: 16px;
+      outline: none;
+      transition: all 0.3s ease;
+      font-family: inherit;
+    }
+
+    input:focus, textarea:focus, select:focus {
+      border-color: #007aff;
+      box-shadow: 0 0 0 4px rgba(0, 122, 255, 0.1);
+    }
+
+    textarea {
+      min-height: 120px;
+      resize: vertical;
+    }
+
+    .color-picker-group {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(60px, 1fr));
+      gap: 12px;
+      margin-top: 12px;
+    }
+
+    .color-option {
+      width: 100%;
+      height: 60px;
+      border-radius: 12px;
+      border: 3px solid transparent;
+      cursor: pointer;
+      transition: all 0.3s ease;
+    }
+
+    .color-option:hover {
+      transform: scale(1.1);
+    }
+
+    .color-option.selected {
+      border-color: #1d1d1f;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+    }
+
+    .btn-primary {
+      background: #007aff;
+      color: white;
+      padding: 16px 32px;
+      border: none;
+      border-radius: 12px;
+      font-weight: 600;
+      font-size: 16px;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      width: 100%;
+    }
+
+    .btn-primary:hover {
+      background: #0056b3;
+      transform: translateY(-2px);
+      box-shadow: 0 12px 24px rgba(0, 122, 255, 0.3);
+    }
+
+    .btn-secondary {
+      background: #ffffff;
+      color: #007aff;
+      border: 2px solid #007aff;
+      padding: 16px 32px;
+      border-radius: 12px;
+      font-weight: 600;
+      font-size: 16px;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      width: 100%;
+      margin-top: 12px;
+    }
+
+    .btn-secondary:hover {
+      background: #007aff;
+      color: white;
+    }
+
+    .success-message {
+      background: #e8f5e9;
+      border: 2px solid #4caf50;
+      border-radius: 12px;
+      padding: 16px;
+      margin-bottom: 24px;
+      display: none;
+      align-items: center;
+      gap: 12px;
+      color: #2e7d32;
+      font-weight: 600;
+    }
+
+    .success-message.show {
+      display: flex;
+    }
+
+    @media (max-width: 768px) {
+      .header-content {
+        flex-direction: column;
+        gap: 20px;
+      }
+
+      .container {
+        padding: 20px 16px;
+      }
+
+      .profile-header, .profile-section {
+        padding: 24px 20px;
+      }
+
+      .profile-header h2 {
+        font-size: 28px;
+      }
+
+      .color-picker-group {
+        grid-template-columns: repeat(4, 1fr);
+      }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <div class="header-content">
+      <a href="/plataforma" class="logo">
+        <img src="imagens/LogoConectaEdu.png" alt="Logo">
+        <h1>ConectaEdu</h1>
+      </a>
+      <div class="user-menu">
+        <div class="user-button" onclick="toggleDropdown()">
+          <div class="user-avatar" id="headerAvatar">U</div>
+          <span class="user-name" id="headerUserName">Usuário</span>
+          <span class="dropdown-arrow">▼</span>
+        </div>
+        <div class="dropdown-menu" id="dropdownMenu">
+          <a href="/perfil" class="dropdown-item">
+            <span>⚙️</span>
+            <span>Configurar Perfil</span>
+          </a>
+          <a href="/plataforma" class="dropdown-item">
+            <span>🏠</span>
+            <span>Voltar à Plataforma</span>
+          </a>
+          <a href="/sair" class="dropdown-item">
+            <span>🚪</span>
+            <span>Sair da Conta</span>
+          </a>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    <div class="container">
+      <div class="success-message" id="successMessage">
+        <span>✓</span>
+        <span>Perfil atualizado com sucesso!</span>
+      </div>
+
+      <div class="profile-header">
+        <div class="profile-avatar-large" id="profileAvatar">
+          U
+          <div class="avatar-edit-icon">✏️</div>
+        </div>
+        <h2 id="profileName">Meu Perfil</h2>
+        <p>Personalize sua experiência na plataforma</p>
+      </div>
+
+      <form id="profileForm">
+        <div class="profile-section">
+          <h3>Informações Pessoais</h3>
+          
+          <div class="form-group">
+            <label for="nomeCompleto">Nome Completo</label>
+            <input type="text" id="nomeCompleto" name="nomeCompleto" placeholder="Digite seu nome completo">
+          </div>
+
+          <div class="form-group">
+            <label for="email">E-mail</label>
+            <input type="email" id="email" name="email" placeholder="seu@email.com">
+          </div>
+
+          <div class="form-group">
+            <label for="bio">Biografia</label>
+            <textarea id="bio" name="bio" placeholder="Conte um pouco sobre você..."></textarea>
+          </div>
+
+          <div class="form-group">
+            <label for="instituicao">Instituição de Ensino</label>
+            <input type="text" id="instituicao" name="instituicao" placeholder="Nome da sua escola/universidade">
+          </div>
+        </div>
+
+        <div class="profile-section">
+          <h3>Personalização</h3>
+          
+          <div class="form-group">
+            <label>Cor do Avatar</label>
+            <div class="color-picker-group">
+              <div class="color-option selected" style="background: #007aff;" data-color="#007aff"></div>
+              <div class="color-option" style="background: #34c759;" data-color="#34c759"></div>
+              <div class="color-option" style="background: #ff9500;" data-color="#ff9500"></div>
+              <div class="color-option" style="background: #ff3b30;" data-color="#ff3b30"></div>
+              <div class="color-option" style="background: #af52de;" data-color="#af52de"></div>
+              <div class="color-option" style="background: #ff2d55;" data-color="#ff2d55"></div>
+              <div class="color-option" style="background: #5856d6;" data-color="#5856d6"></div>
+              <div class="color-option" style="background: #64d2ff;" data-color="#64d2ff"></div>
+            </div>
+          </div>
+        </div>
+
+        <div class="profile-section">
+          <button type="submit" class="btn-primary">Salvar Alterações</button>
+          <button type="button" class="btn-secondary" onclick="window.location.href='/plataforma'">Sair</button>
+        </div>
+      </form>
+    </div>
+  </main>
+
+  <script>
+    let selectedColor = '#007aff';
+
+    // Buscar dados do usuário
+    fetch('/status')
+      .then(response => response.json())
+      .then(data => {
+        if (data.logado && data.usuario) {
+          document.getElementById('headerUserName').textContent = data.usuario;
+          document.getElementById('profileName').textContent = data.usuario;
+          
+          const initial = data.usuario.charAt(0).toUpperCase();
+          document.getElementById('headerAvatar').textContent = initial;
+          document.getElementById('profileAvatar').textContent = initial;
+          
+          // Carregar dados do perfil
+          loadProfile();
+        } else {
+          window.location.href = '/login';
+        }
+      })
+      .catch(error => {
+        console.log('Erro ao verificar status:', error);
+        window.location.href = '/login';
+      });
+
+    function loadProfile() {
+      fetch('/perfil/dados')
+        .then(response => response.json())
+        .then(data => {
+          if (data) {
+            document.getElementById('nomeCompleto').value = data.nomeCompleto || '';
+            document.getElementById('email').value = data.email || '';
+            document.getElementById('bio').value = data.bio || '';
+            document.getElementById('instituicao').value = data.instituicao || '';
+            
+            if (data.corAvatar) {
+              selectedColor = data.corAvatar;
+              document.getElementById('profileAvatar').style.background = selectedColor;
+              document.getElementById('headerAvatar').style.background = selectedColor;
+              
+              document.querySelectorAll('.color-option').forEach(opt => {
+                opt.classList.remove('selected');
+                if (opt.dataset.color === selectedColor) {
+                  opt.classList.add('selected');
+                }
+              });
+            }
+          }
+        })
+        .catch(error => console.log('Erro ao carregar perfil:', error));
+    }
+
+    // Seleção de cor
+    document.querySelectorAll('.color-option').forEach(option => {
+      option.addEventListener('click', function() {
+        document.querySelectorAll('.color-option').forEach(opt => opt.classList.remove('selected'));
+        this.classList.add('selected');
+        selectedColor = this.dataset.color;
+        document.getElementById('profileAvatar').style.background = selectedColor;
+        document.getElementById('headerAvatar').style.background = selectedColor;
+      });
+    });
+
+    // Enviar formulário
+    document.getElementById('profileForm').addEventListener('submit', async function(e) {
+      e.preventDefault();
+      
+      const formData = {
+        nomeCompleto: document.getElementById('nomeCompleto').value,
+        email: document.getElementById('email').value,
+        bio: document.getElementById('bio').value,
+        instituicao: document.getElementById('instituicao').value,
+        corAvatar: selectedColor
+      };
+
+      try {
+        const response = await fetch('/perfil/atualizar', {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json'
+          },
+          body: JSON.stringify(formData)
+        });
+
+        if (response.ok) {
+          const successMsg = document.getElementById('successMessage');
+          successMsg.classList.add('show');
+          setTimeout(() => {
+            successMsg.classList.remove('show');
+          }, 3000);
+        }
+      } catch (error) {
+        console.error('Erro ao salvar perfil:', error);
+        alert('Erro ao salvar as alterações. Tente novamente.');
+      }
+    });
+
+    function toggleDropdown() {
+      const dropdown = document.getElementById('dropdownMenu');
+      const button = document.querySelector('.user-button');
+      dropdown.classList.toggle('show');
+      button.classList.toggle('active');
+    }
+
+    // Fechar dropdown ao clicar fora
+    document.addEventListener('click', function(event) {
+      const userMenu = document.querySelector('.user-menu');
+      if (!userMenu.contains(event.target)) {
+        document.getElementById('dropdownMenu').classList.remove('show');
+        document.querySelector('.user-button').classList.remove('active');
+      }
+    });
+  </script>
+</body>
+</html>
