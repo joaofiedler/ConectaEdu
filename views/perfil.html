@@ -396,15 +396,12 @@
         </div>
         <div class="dropdown-menu" id="dropdownMenu">
           <a href="/perfil" class="dropdown-item">
-            <span>⚙️</span>
             <span>Configurar Perfil</span>
           </a>
           <a href="/plataforma" class="dropdown-item">
-            <span>🏠</span>
             <span>Voltar à Plataforma</span>
           </a>
           <a href="/sair" class="dropdown-item">
-            <span>🚪</span>
             <span>Sair da Conta</span>
           </a>
         </div>
@@ -482,7 +479,6 @@
   <script>
     let selectedColor = '#007aff';
 
-    // Buscar dados do usuário
     fetch('/status')
       .then(response => response.json())
       .then(data => {
@@ -494,7 +490,6 @@
           document.getElementById('headerAvatar').textContent = initial;
           document.getElementById('profileAvatar').textContent = initial;
           
-          // Carregar dados do perfil
           loadProfile();
         } else {
           window.location.href = '/login';
@@ -532,7 +527,6 @@
         .catch(error => console.log('Erro ao carregar perfil:', error));
     }
 
-    // Seleção de cor
     document.querySelectorAll('.color-option').forEach(option => {
       option.addEventListener('click', function() {
         document.querySelectorAll('.color-option').forEach(opt => opt.classList.remove('selected'));
@@ -543,7 +537,6 @@
       });
     });
 
-    // Enviar formulário
     document.getElementById('profileForm').addEventListener('submit', async function(e) {
       e.preventDefault();
       
@@ -584,7 +577,6 @@
       button.classList.toggle('active');
     }
 
-    // Fechar dropdown ao clicar fora
     document.addEventListener('click', function(event) {
       const userMenu = document.querySelector('.user-menu');
       if (!userMenu.contains(event.target)) {
