@@ -24,7 +24,7 @@ Antes de começar, verifique se você possui instalado:
    npm install
 
 4. **Inicie o servidor:**
-   npm start
+   node index.js
 
 5. **Abra o navegador e acesse:**
    http://localhost:3000
