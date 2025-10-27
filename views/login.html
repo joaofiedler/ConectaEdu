@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Login - ConectaEdu</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: -apple-system, BlinkMacSystemFont, 'SF Pro Display', 'SF Pro Text', 'Helvetica Neue', Helvetica, Arial, sans-serif;
+    }
+    
+    body {
+      background: linear-gradient(135deg, #f8f9fa, #ffffff);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      min-height: 100vh;
+      padding: 20px;
+    }
+    
+    .login-container {
+      background: #ffffff;
+      border-radius: 24px;
+      padding: 48px;
+      width: 100%;
+      max-width: 400px;
+      box-shadow: 0 20px 40px rgba(0, 0, 0, 0.08);
+      border: 1px solid rgba(0, 0, 0, 0.05);
+      text-align: center;
+    }
+    
+    .logo-container {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 12px;
+      margin-bottom: 40px;
+    }
+    
+    .logo-container img {
+      width: 48px;
+      height: 48px;
+      border-radius: 12px;
+    }
+    
+    .logo-container h1 {
+      font-size: 28px;
+      font-weight: 700;
+      color: #1d1d1f;
+      margin: 0;
+    }
+    
+    .welcome-text {
+      color: #86868b;
+      font-size: 16px;
+      margin-bottom: 32px;
+      font-weight: 400;
+    }
+    
+    .form-group {
+      margin-bottom: 20px;
+      text-align: left;
+    }
+    
+    .form-group label {
+      display: block;
+      color: #1d1d1f;
+      font-size: 14px;
+      font-weight: 600;
+      margin-bottom: 8px;
+    }
+    
+    input {
+      width: 100%;
+      padding: 16px;
+      border: 2px solid #e5e5e7;
+      border-radius: 12px;
+      background: #ffffff;
+      color: #1d1d1f;
+      font-size: 16px;
+      outline: none;
+      transition: all 0.3s ease;
+      font-family: inherit;
+    }
+    
+    input:focus {
+      border-color: #007aff;
+      box-shadow: 0 0 0 4px rgba(0, 122, 255, 0.1);
+    }
+    
+    input::placeholder {
+      color: #86868b;
+    }
+    
+    button {
+      background: #007aff;
+      color: #ffffff;
+      border: none;
+      padding: 16px;
+      width: 100%;
+      border-radius: 12px;
+      cursor: pointer;
+      font-weight: 600;
+      font-size: 16px;
+      transition: all 0.3s ease;
+      margin-top: 8px;
+      font-family: inherit;
+    }
+    
+    button:hover {
+      background: #0056b3;
+      transform: translateY(-1px);
+      box-shadow: 0 8px 20px rgba(0, 122, 255, 0.3);
+    }
+    
+    button:active {
+      transform: translateY(0);
+    }
+    
+    .links {
+      margin-top: 32px;
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+    }
+    
+    .links a {
+      color: #007aff;
+      text-decoration: none;
+      font-size: 14px;
+      font-weight: 500;
+      transition: color 0.3s ease;
+    }
+    
+    .links a:hover {
+      color: #0056b3;
+      text-decoration: underline;
+    }
+    
+    .divider {
+      height: 1px;
+      background: #e5e5e7;
+      margin: 24px 0;
+    }
+    
+    @media (max-width: 480px) {
+      .login-container {
+        padding: 32px 24px;
+        margin: 0 16px;
+      }
+      
+      .logo-container h1 {
+        font-size: 24px;
+      }
+      
+      .logo-container img {
+        width: 40px;
+        height: 40px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="login-container">
+    <div class="logo-container">
+      <img src="imagens/LogoConectaEdu.png" alt="Logo ConectaEdu">
+      <h1>ConectaEdu</h1>
+    </div>
+    
+    <p class="welcome-text">Entre na sua conta para continuar</p>
+    
+    <form action="/login" method="POST">
+      <div class="form-group">
+        <label for="usuario">Usuário</label>
+        <input type="text" id="usuario" name="usuario" placeholder="Digite seu usuário" required>
+      </div>
+      
+      <div class="form-group">
+        <label for="senha">Senha</label>
+        <input type="password" id="senha" name="senha" placeholder="Digite sua senha" required>
+      </div>
+      
+      <button type="submit">Entrar</button>
+    </form>
+    
+    <div class="divider"></div>
+    
+    <div class="links">
+      <a href="/registro">Criar nova conta</a>
+      <a href="/">Voltar ao início</a>
+    </div>
+  </div>
+</body>
+</html>

@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Erro - ConectaEdu</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: -apple-system, BlinkMacSystemFont, 'SF Pro Display', 'SF Pro Text', 'Helvetica Neue', Helvetica, Arial, sans-serif;
+    }
+    
+    body {
+      background: linear-gradient(135deg, #f8f9fa, #ffffff);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      min-height: 100vh;
+      padding: 20px;
+    }
+    
+    .error-container {
+      background: #ffffff;
+      border-radius: 24px;
+      padding: 48px;
+      width: 100%;
+      max-width: 500px;
+      box-shadow: 0 20px 40px rgba(0, 0, 0, 0.08);
+      border: 1px solid rgba(0, 0, 0, 0.05);
+      text-align: center;
+    }
+    
+    .logo-container {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 12px;
+      margin-bottom: 40px;
+    }
+    
+    .logo-container img {
+      width: 48px;
+      height: 48px;
+      border-radius: 12px;
+    }
+    
+    .logo-container h1 {
+      font-size: 28px;
+      font-weight: 700;
+      color: #1d1d1f;
+      margin: 0;
+    }
+    
+    .error-icon {
+      font-size: 64px;
+      margin-bottom: 24px;
+      display: block;
+    }
+    
+    .error-title {
+      font-size: 32px;
+      font-weight: 700;
+      color: #1d1d1f;
+      margin-bottom: 16px;
+    }
+    
+    .error-message {
+      color: #86868b;
+      font-size: 18px;
+      margin-bottom: 40px;
+      line-height: 1.6;
+    }
+    
+    .btn {
+      background: #007aff;
+      color: #ffffff;
+      border: none;
+      padding: 16px 32px;
+      border-radius: 12px;
+      text-decoration: none;
+      font-weight: 600;
+      font-size: 18px;
+      transition: all 0.3s ease;
+      display: inline-block;
+      margin-bottom: 24px;
+    }
+    
+    .btn:hover {
+      background: #0056b3;
+      transform: translateY(-2px);
+      box-shadow: 0 12px 24px rgba(0, 122, 255, 0.3);
+    }
+    
+    .btn-secondary {
+      background: #ffffff;
+      color: #007aff;
+      border: 2px solid #007aff;
+    }
+    
+    .btn-secondary:hover {
+      background: #007aff;
+      color: white;
+    }
+    
+    .links {
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+    }
+    
+    .links a {
+      color: #007aff;
+      text-decoration: none;
+      font-size: 14px;
+      font-weight: 500;
+      transition: color 0.3s ease;
+    }
+    
+    .links a:hover {
+      color: #0056b3;
+      text-decoration: underline;
+    }
+    
+    .divider {
+      height: 1px;
+      background: #e5e5e7;
+      margin: 24px 0;
+    }
+    
+    .error-details {
+      background: #f5f5f7;
+      border-radius: 12px;
+      padding: 16px;
+      margin-top: 24px;
+      font-size: 14px;
+      color: #86868b;
+      text-align: left;
+    }
+    
+    @media (max-width: 480px) {
+      .error-container {
+        padding: 32px 24px;
+        margin: 0 16px;
+      }
+      
+      .logo-container h1 {
+        font-size: 24px;
+      }
+      
+      .logo-container img {
+        width: 40px;
+        height: 40px;
+      }
+      
+      .error-title {
+        font-size: 28px;
+      }
+      
+      .error-message {
+        font-size: 16px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="error-container">
+    <div class="logo-container">
+      <img src="imagens/LogoConectaEdu.png" alt="Logo ConectaEdu">
+      <h1>ConectaEdu</h1>
+    </div>
+    
+    <span class="error-icon">⚠️</span>
+    
+    <h2 class="error-title">Ops! Algo deu errado</h2>
+    <p class="error-message">Não foi possível fazer login. Verifique suas credenciais e tente novamente.</p>
+    
+    <a href="/login" class="btn">Tentar Novamente</a>
+    <a href="/registro" class="btn btn-secondary">Criar Conta</a>
+    
+    <div class="divider"></div>
+    
+    <div class="links">
+      <a href="/">Voltar ao início</a>
+      <a href="#help">Preciso de ajuda</a>
+    </div>
+    
+    <div class="error-details">
+      <strong>Possíveis causas:</strong><br>
+      • Usuário ou senha incorretos<br>
+      • Conta não encontrada<br>
+      • Problema de conexão
+    </div>
+  </div>
+</body>
+</html>
