@@ -111,12 +111,10 @@ app.get('/plataforma', protegerRota, (req, res) => {
     res.sendFile(__dirname + '/views/plataforma.html');
 });
 
-// Nova rota para a página de perfil
 app.get('/perfil', protegerRota, (req, res) => {
     res.sendFile(__dirname + '/views/perfil.html');
 });
 
-// Rota para buscar dados do perfil
 app.get('/perfil/dados', protegerRota, async (req, res) => {
     const cliente = new MongoClient(urlMongo);
     try {
@@ -135,7 +133,6 @@ app.get('/perfil/dados', protegerRota, async (req, res) => {
     }
 });
 
-// Rota para atualizar dados do perfil
 app.post('/perfil/atualizar', protegerRota, async (req, res) => {
     const cliente = new MongoClient(urlMongo);
     try {
@@ -163,6 +160,40 @@ app.post('/perfil/atualizar', protegerRota, async (req, res) => {
     } catch (erro) {
         console.log('Erro ao atualizar perfil:', erro);
         res.status(500).json({ erro: 'Erro ao atualizar perfil' });
+    } finally {
+        cliente.close();
+    }
+});
+
+app.get('/sobre', (req, res) => {
+    res.sendFile(__dirname + '/views/sobre.html');
+});
+
+app.get('/contato', (req, res) => {
+    res.sendFile(__dirname + '/views/contato.html');
+});
+
+app.post('/contato/enviar', async (req, res) => {
+    const cliente = new MongoClient(urlMongo);
+    try {
+        await cliente.connect();
+        const banco = cliente.db(nomeBanco);
+        const colecaoContatos = banco.collection('contatos');
+
+        const mensagemContato = {
+            nome: req.body.nome,
+            email: req.body.email,
+            mensagem: req.body.mensagem,
+            data: new Date(req.body.data),
+            lida: false
+        };
+
+        await colecaoContatos.insertOne(mensagemContato);
+
+        res.json({ sucesso: true, mensagem: 'Mensagem enviada com sucesso' });
+    } catch (erro) {
+        console.log('Erro ao enviar mensagem:', erro);
+        res.status(500).json({ erro: 'Erro ao enviar mensagem' });
     } finally {
         cliente.close();
     }

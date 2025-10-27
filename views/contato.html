@@ -1,0 +1,606 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Contato - ConectaEdu</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: -apple-system, BlinkMacSystemFont, 'SF Pro Display', 'SF Pro Text', 'Helvetica Neue', Helvetica, Arial, sans-serif;
+    }
+    
+    body {
+      background: linear-gradient(135deg, #f8f9fa, #ffffff);
+      color: #1d1d1f;
+      line-height: 1.6;
+    }
+
+    .background-shapes {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      z-index: 0;
+      pointer-events: none;
+      overflow: hidden;
+    }
+
+    .shape {
+      position: absolute;
+      opacity: 0.15;
+      animation: float 20s infinite ease-in-out;
+      will-change: transform;
+    }
+
+    .shape.circle {
+      border-radius: 50%;
+      background: linear-gradient(135deg, #007aff, #0056b3);
+    }
+
+    .shape.square {
+      background: linear-gradient(135deg, #007aff, #0056b3);
+      border-radius: 20px;
+    }
+
+    .shape:nth-child(1) {
+      width: 300px;
+      height: 300px;
+      top: 10%;
+      left: 5%;
+      animation-delay: 0s;
+      animation-duration: 25s;
+    }
+
+    .shape:nth-child(2) {
+      width: 200px;
+      height: 200px;
+      top: 60%;
+      right: 10%;
+      animation-delay: 3s;
+      animation-duration: 20s;
+    }
+
+    .shape:nth-child(3) {
+      width: 150px;
+      height: 150px;
+      bottom: 15%;
+      left: 15%;
+      animation-delay: 6s;
+      animation-duration: 30s;
+    }
+
+    .shape:nth-child(4) {
+      width: 250px;
+      height: 250px;
+      top: 40%;
+      right: 20%;
+      animation-delay: 9s;
+      animation-duration: 22s;
+    }
+
+    .shape:nth-child(5) {
+      width: 180px;
+      height: 180px;
+      top: 70%;
+      left: 40%;
+      animation-delay: 12s;
+      animation-duration: 28s;
+    }
+
+    .shape:nth-child(6) {
+      width: 220px;
+      height: 220px;
+      top: 20%;
+      right: 35%;
+      animation-delay: 15s;
+      animation-duration: 26s;
+    }
+
+    @keyframes float {
+      0%, 100% {
+        transform: translate(0, 0) rotate(0deg);
+      }
+      25% {
+        transform: translate(30px, -30px) rotate(90deg);
+      }
+      50% {
+        transform: translate(-20px, 20px) rotate(180deg);
+      }
+      75% {
+        transform: translate(20px, 30px) rotate(270deg);
+      }
+    }
+
+    header, main, footer {
+      position: relative;
+      z-index: 1;
+    }
+
+    header {
+      background: rgba(255, 255, 255, 0.8);
+      backdrop-filter: blur(20px);
+      border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+      padding: 20px 0;
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      z-index: 1000;
+    }
+
+    .header-content {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 24px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .logo {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      text-decoration: none;
+      color: inherit;
+    }
+
+    .logo img {
+      width: 40px;
+      height: 40px;
+      border-radius: 10px;
+    }
+
+    .logo h1 {
+      font-size: 24px;
+      font-weight: 700;
+      color: #1d1d1f;
+    }
+
+    nav ul {
+      display: flex;
+      list-style: none;
+      gap: 32px;
+      align-items: center;
+    }
+
+    nav ul li a {
+      text-decoration: none;
+      color: #1d1d1f;
+      font-weight: 500;
+      font-size: 16px;
+      transition: color 0.3s ease;
+    }
+
+    nav ul li a:hover {
+      color: #007aff;
+    }
+
+    nav ul li a.active {
+      color: #007aff;
+      font-weight: 600;
+    }
+
+    main {
+      margin-top: 80px;
+      min-height: calc(100vh - 80px);
+      padding: 60px 24px;
+    }
+
+    .container {
+      max-width: 800px;
+      margin: 0 auto;
+    }
+
+    .page-header {
+      text-align: center;
+      margin-bottom: 48px;
+    }
+
+    .page-header h2 {
+      font-size: 48px;
+      font-weight: 700;
+      color: #1d1d1f;
+      margin-bottom: 16px;
+    }
+
+    .page-header p {
+      font-size: 21px;
+      color: #86868b;
+      max-width: 600px;
+      margin: 0 auto;
+    }
+
+    .contact-container {
+      background: #ffffff;
+      border-radius: 24px;
+      padding: 48px;
+      box-shadow: 0 20px 40px rgba(0, 0, 0, 0.08);
+      border: 1px solid rgba(0, 0, 0, 0.05);
+    }
+
+    .contact-info {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 24px;
+      margin-bottom: 48px;
+      padding-bottom: 32px;
+      border-bottom: 2px solid #f5f5f7;
+    }
+
+    .info-item {
+      text-align: center;
+    }
+
+    .info-icon {
+      font-size: 32px;
+      margin-bottom: 12px;
+      display: block;
+    }
+
+    .info-item h3 {
+      font-size: 16px;
+      font-weight: 600;
+      color: #1d1d1f;
+      margin-bottom: 8px;
+    }
+
+    .info-item p {
+      font-size: 14px;
+      color: #86868b;
+    }
+
+    .form-section h3 {
+      font-size: 28px;
+      font-weight: 700;
+      color: #1d1d1f;
+      margin-bottom: 24px;
+      text-align: center;
+    }
+
+    .form-group {
+      margin-bottom: 24px;
+    }
+
+    .form-group label {
+      display: block;
+      color: #1d1d1f;
+      font-size: 14px;
+      font-weight: 600;
+      margin-bottom: 8px;
+    }
+
+    input, textarea {
+      width: 100%;
+      padding: 16px;
+      border: 2px solid #e5e5e7;
+      border-radius: 12px;
+      background: #ffffff;
+      color: #1d1d1f;
+      font-size: 16px;
+      outline: none;
+      transition: all 0.3s ease;
+      font-family: inherit;
+    }
+
+    input:focus, textarea:focus {
+      border-color: #007aff;
+      box-shadow: 0 0 0 4px rgba(0, 122, 255, 0.1);
+    }
+
+    input::placeholder, textarea::placeholder {
+      color: #86868b;
+    }
+
+    textarea {
+      min-height: 150px;
+      resize: vertical;
+    }
+
+    .char-count {
+      text-align: right;
+      font-size: 12px;
+      color: #86868b;
+      margin-top: 4px;
+    }
+
+    button {
+      background: #007aff;
+      color: #ffffff;
+      border: none;
+      padding: 18px 32px;
+      width: 100%;
+      border-radius: 12px;
+      cursor: pointer;
+      font-weight: 600;
+      font-size: 18px;
+      transition: all 0.3s ease;
+      font-family: inherit;
+      margin-top: 8px;
+    }
+
+    button:hover {
+      background: #0056b3;
+      transform: translateY(-2px);
+      box-shadow: 0 12px 24px rgba(0, 122, 255, 0.3);
+    }
+
+    button:active {
+      transform: translateY(0);
+    }
+
+    button:disabled {
+      background: #86868b;
+      cursor: not-allowed;
+      transform: none;
+    }
+
+    .success-message {
+      background: #e8f5e9;
+      border: 2px solid #4caf50;
+      border-radius: 12px;
+      padding: 20px;
+      margin-bottom: 24px;
+      display: none;
+      align-items: center;
+      gap: 12px;
+      color: #2e7d32;
+      font-weight: 600;
+      font-size: 16px;
+    }
+
+    .success-message.show {
+      display: flex;
+    }
+
+    .success-icon {
+      font-size: 24px;
+    }
+
+    .error-message {
+      background: #ffebee;
+      border: 2px solid #f44336;
+      border-radius: 12px;
+      padding: 20px;
+      margin-bottom: 24px;
+      display: none;
+      align-items: center;
+      gap: 12px;
+      color: #c62828;
+      font-weight: 600;
+      font-size: 16px;
+    }
+
+    .error-message.show {
+      display: flex;
+    }
+
+    footer {
+      background: #f5f5f7;
+      padding: 40px 24px;
+      text-align: center;
+      border-top: 1px solid rgba(0, 0, 0, 0.05);
+    }
+
+    footer p {
+      color: #86868b;
+      font-size: 14px;
+    }
+
+    @media (max-width: 768px) {
+      .header-content {
+        flex-direction: column;
+        gap: 20px;
+      }
+
+      nav ul {
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 20px;
+      }
+
+      .page-header h2 {
+        font-size: 36px;
+      }
+
+      .page-header p {
+        font-size: 18px;
+      }
+
+      .contact-container {
+        padding: 32px 24px;
+      }
+
+      .contact-info {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    @media (max-width: 480px) {
+      main {
+        padding: 40px 16px;
+      }
+
+      .page-header h2 {
+        font-size: 32px;
+      }
+
+      .contact-container {
+        padding: 24px 20px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <!-- Formas geométricas de fundo -->
+  <div class="background-shapes">
+    <div class="shape circle"></div>
+    <div class="shape square"></div>
+    <div class="shape circle"></div>
+    <div class="shape square"></div>
+    <div class="shape circle"></div>
+    <div class="shape square"></div>
+  </div>
+
+  <header>
+    <div class="header-content">
+      <a href="/" class="logo">
+        <img src="imagens/LogoConectaEdu.png" alt="logo">
+        <h1>ConectaEdu</h1>
+      </a>
+      <nav>
+        <ul>
+          <li><a href="/sobre">Sobre Nós</a></li>
+          <li><a href="#" style="opacity: 0.5; cursor: not-allowed;" onclick="return false;">Cursos</a></li>
+          <li><a href="/contato" class="active">Contato</a></li>
+          <li><a href="#" style="opacity: 0.5; cursor: not-allowed;" onclick="return false;">Assistente Virtual</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <div class="container">
+      <div class="page-header">
+        <h2>Entre em Contato</h2>
+        <p>Tem alguma dúvida ou sugestão? Envie uma mensagem e retornaremos em breve!</p>
+      </div>
+
+      <div class="contact-container">
+        <div class="contact-info">
+        </div>
+
+        <div class="form-section">
+          <h3>Envie sua Mensagem</h3>
+
+          <div class="success-message" id="successMessage">
+            <span class="success-icon">✓</span>
+            <span>Mensagem enviada com sucesso! Entraremos em contato em breve.</span>
+          </div>
+
+          <div class="error-message" id="errorMessage">
+            <span>✗</span>
+            <span>Erro ao enviar mensagem. Por favor, tente novamente.</span>
+          </div>
+
+          <form id="contactForm">
+            <div class="form-group">
+              <label for="nome">Nome Completo</label>
+              <input 
+                type="text" 
+                id="nome" 
+                name="nome" 
+                placeholder="Digite seu nome completo" 
+                required
+              >
+            </div>
+
+            <div class="form-group">
+              <label for="email">Email</label>
+              <input 
+                type="email" 
+                id="email" 
+                name="email" 
+                placeholder="seu@email.com" 
+                required
+              >
+            </div>
+
+            <div class="form-group">
+              <label for="mensagem">Mensagem</label>
+              <textarea 
+                id="mensagem" 
+                name="mensagem" 
+                placeholder="Escreva sua mensagem aqui..." 
+                maxlength="1000"
+                required
+              ></textarea>
+              <div class="char-count">
+                <span id="charCount">0</span>/1000 caracteres
+              </div>
+            </div>
+
+            <button type="submit" id="submitBtn">Enviar Mensagem</button>
+          </form>
+        </div>
+      </div>
+    </div>
+  </main>
+
+  <footer>
+    <p>©2025 ConectaEdu. All rights reserved.</p>
+  </footer>
+
+  <script>
+    const form = document.getElementById('contactForm');
+    const mensagemTextarea = document.getElementById('mensagem');
+    const charCount = document.getElementById('charCount');
+    const submitBtn = document.getElementById('submitBtn');
+    const successMessage = document.getElementById('successMessage');
+    const errorMessage = document.getElementById('errorMessage');
+
+    mensagemTextarea.addEventListener('input', function() {
+      charCount.textContent = this.value.length;
+    });
+
+    form.addEventListener('submit', async function(e) {
+      e.preventDefault();
+
+      submitBtn.disabled = true;
+      submitBtn.textContent = 'Enviando...';
+
+      successMessage.classList.remove('show');
+      errorMessage.classList.remove('show');
+
+      const formData = {
+        nome: document.getElementById('nome').value,
+        email: document.getElementById('email').value,
+        mensagem: document.getElementById('mensagem').value,
+        data: new Date().toISOString()
+      };
+
+      try {
+        const response = await fetch('/contato/enviar', {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json'
+          },
+          body: JSON.stringify(formData)
+        });
+
+        if (response.ok) {
+          successMessage.classList.add('show');
+          
+          form.reset();
+          charCount.textContent = '0';
+
+          window.scrollTo({
+            top: 0,
+            behavior: 'smooth'
+          });
+
+          setTimeout(() => {
+            successMessage.classList.remove('show');
+          }, 5000);
+        } else {
+          throw new Error('Erro ao enviar');
+        }
+      } catch (error) {
+        console.error('Erro:', error);
+        errorMessage.classList.add('show');
+
+        setTimeout(() => {
+          errorMessage.classList.remove('show');
+        }, 5000);
+      } finally {
+        submitBtn.disabled = false;
+        submitBtn.textContent = 'Enviar Mensagem';
+      }
+    });
+  </script>
+</body>
+</html>
