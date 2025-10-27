@@ -2,5 +2,3 @@
 2- criar a aba cursos com uma breve apresentação dos cursos
 3- criar aba contatos
 4- criar a aba assistente virtual com um chatbot pre configurado
-5- adicionar personalização de perfil
-6- melhorar o header de quando esta logado, adicionando uma setinha que quando pressionada aparece a opção de configurar o perfil e sair da conta
