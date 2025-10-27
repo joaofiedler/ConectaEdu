@@ -32,7 +32,7 @@ app.post('/registro', async (req, res) => {
         const usuarioExistente = await colecaoUsuarios.findOne({ usuario: req.body.usuario});
 
         if (usuarioExistente) {
-            res.send('Usuario já Existe! Tente outro nome de usuário');
+            res.redirect('/registro?erro=usuario-existe');
         } else {
             const senhaCriptografada = await bcrypt.hash(req.body.senha, 10);
 

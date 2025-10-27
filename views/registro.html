@@ -156,6 +156,28 @@
       text-align: left;
     }
     
+    .error-message {
+      background: #ffebee;
+      border: 1px solid #ffcdd2;
+      border-radius: 12px;
+      padding: 16px;
+      margin-bottom: 24px;
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+    
+    .error-message .error-icon {
+      font-size: 20px;
+    }
+    
+    .error-message p {
+      color: #d32f2f;
+      font-size: 14px;
+      font-weight: 500;
+      margin: 0;
+    }
+    
     @media (max-width: 480px) {
       .register-container {
         padding: 32px 24px;
@@ -180,7 +202,9 @@
       <h1>ConectaEdu</h1>
     </div>
     
-    <p class="welcome-text">Crie sua conta e comece sua jornada educacional</p>
+    <div id="error-message" class="error-message" style="display: none;">
+      <p>Este nome de usuário já está sendo usado.</p>
+    </div>
     
     <form action="/registro" method="POST">
       <div class="form-group">
@@ -207,5 +231,12 @@
       <a href="/">Voltar ao início</a>
     </div>
   </div>
+  
+  <script>
+    const urlParams = new URLSearchParams(window.location.search);
+    if (urlParams.get('erro') === 'usuario-existe') {
+      document.getElementById('error-message').style.display = 'flex';
+    }
+  </script>
 </body>
 </html>

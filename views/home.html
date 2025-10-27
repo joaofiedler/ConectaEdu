@@ -272,7 +272,7 @@
                     <li><a href="#assistente">Assistente Virtual</a></li>
                 </ul>
             </nav>
-            <a href="#" class="sign-up" id="signInBtn">Sign In</a>
+            <a href="#" class="sign-up" id="signInBtn" onclick="handleSignIn(); return false;">Sign In</a>
         </div>
     </header>
 
@@ -324,6 +324,14 @@
         function acessarPlataforma() {
             if (usuarioLogado) {
                 window.location.href = '/plataforma';
+            } else {
+                window.location.href = '/login';
+            }
+        }
+
+        function handleSignIn() {
+            if (usuarioLogado) {
+                window.location.href = '/sair';
             } else {
                 window.location.href = '/login';
             }
