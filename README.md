@@ -24,7 +24,7 @@ Antes de começar, verifique se você possui instalado:
    cd ConectaEdu
    ```
 
-### 3. **Acesse a pasta do projeto:**
+### 3. **Baixe as dependencias::**
    ```yaml
    npm install
    ```
