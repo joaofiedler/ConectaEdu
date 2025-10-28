@@ -1,4 +1,2 @@
-1- ajustar o Sobre Nós para mostrar os integrantes com suas respectivas fotos, nomes e rm's.
-2- criar a aba cursos com uma breve apresentação dos cursos
-3- criar aba contatos
-4- criar a aba assistente virtual com um chatbot pre configurado
+1- criar a aba cursos com uma breve apresentação dos cursos
+2- criar a aba assistente virtual com um chatbot pre configurado
