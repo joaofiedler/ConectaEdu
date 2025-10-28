@@ -1,10 +1,7 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
-    <link
-    rel="icon"
-    href="imagens/LogoConectaEdu.png"
-    type="image/png">
+    <link rel="icon" href="imagens/LogoConectaEdu.png" type="image/png">
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Plataforma - ConectaEdu</title>
@@ -23,106 +20,48 @@
         }
 
         .background-shapes {
-      position: fixed;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      z-index: 0;
-      pointer-events: none;
-      overflow: hidden;
-    }
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: 0;
+            pointer-events: none;
+            overflow: hidden;
+        }
 
-    .shape {
-      position: absolute;
-      opacity: 0.15;
-      animation: float 20s infinite ease-in-out;
-      will-change: transform;
-    }
+        .shape {
+            position: absolute;
+            opacity: 0.15;
+            animation: float 20s infinite ease-in-out;
+            will-change: transform;
+        }
 
-    .shape.circle {
-      border-radius: 50%;
-      background: linear-gradient(135deg, #007aff, #0056b3);
-    }
+        .shape.circle {
+            border-radius: 50%;
+            background: linear-gradient(135deg, #007aff, #0056b3);
+        }
 
-    .shape.square {
-      background: linear-gradient(135deg, #007aff, #0056b3);
-      border-radius: 20px;
-    }
+        .shape.square {
+            background: linear-gradient(135deg, #007aff, #0056b3);
+            border-radius: 20px;
+        }
 
-    .shape:nth-child(1) {
-      width: 300px;
-      height: 300px;
-      top: 10%;
-      left: 5%;
-      animation-delay: 0s;
-      animation-duration: 25s;
-    }
+        .shape:nth-child(1) { width: 300px; height: 300px; top: 10%; left: 5%; animation-delay: 0s; animation-duration: 25s; }
+        .shape:nth-child(2) { width: 200px; height: 200px; top: 60%; right: 10%; animation-delay: 3s; animation-duration: 20s; }
+        .shape:nth-child(3) { width: 150px; height: 150px; bottom: 15%; left: 15%; animation-delay: 6s; animation-duration: 30s; }
+        .shape:nth-child(4) { width: 250px; height: 250px; top: 40%; right: 20%; animation-delay: 9s; animation-duration: 22s; }
+        .shape:nth-child(5) { width: 180px; height: 180px; top: 70%; left: 40%; animation-delay: 12s; animation-duration: 28s; }
+        .shape:nth-child(6) { width: 220px; height: 220px; top: 20%; right: 35%; animation-delay: 15s; animation-duration: 26s; }
 
-    .shape:nth-child(2) {
-      width: 200px;
-      height: 200px;
-      top: 60%;
-      right: 10%;
-      animation-delay: 3s;
-      animation-duration: 20s;
-    }
+        @keyframes float {
+            0%, 100% { transform: translate(0, 0) rotate(0deg); }
+            25% { transform: translate(30px, -30px) rotate(90deg); }
+            50% { transform: translate(-20px, 20px) rotate(180deg); }
+            75% { transform: translate(20px, 30px) rotate(270deg); }
+        }
 
-    .shape:nth-child(3) {
-      width: 150px;
-      height: 150px;
-      bottom: 15%;
-      left: 15%;
-      animation-delay: 6s;
-      animation-duration: 30s;
-    }
-
-    .shape:nth-child(4) {
-      width: 250px;
-      height: 250px;
-      top: 40%;
-      right: 20%;
-      animation-delay: 9s;
-      animation-duration: 22s;
-    }
-
-    .shape:nth-child(5) {
-      width: 180px;
-      height: 180px;
-      top: 70%;
-      left: 40%;
-      animation-delay: 12s;
-      animation-duration: 28s;
-    }
-
-    .shape:nth-child(6) {
-      width: 220px;
-      height: 220px;
-      top: 20%;
-      right: 35%;
-      animation-delay: 15s;
-      animation-duration: 26s;
-    }
-
-    @keyframes float {
-      0%, 100% {
-        transform: translate(0, 0) rotate(0deg);
-      }
-      25% {
-        transform: translate(30px, -30px) rotate(90deg);
-      }
-      50% {
-        transform: translate(-20px, 20px) rotate(180deg);
-      }
-      75% {
-        transform: translate(20px, 30px) rotate(270deg);
-      }
-    }
-
-    header, main, footer {
-      position: relative;
-      z-index: 1;
-    }
+        header, main, footer { position: relative; z-index: 1; }
 
         header {
             background: rgba(255, 255, 255, 0.8);
@@ -130,9 +69,7 @@
             border-bottom: 1px solid rgba(0, 0, 0, 0.05);
             padding: 20px 0;
             position: fixed;
-            top: 0;
-            left: 0;
-            right: 0;
+            top: 0; left: 0; right: 0;
             z-index: 1000;
         }
 
@@ -165,9 +102,32 @@
             color: #1d1d1f;
         }
 
-        .user-menu {
-            position: relative;
+        nav ul {
+            display: flex;
+            list-style: none;
+            gap: 32px;
+            align-items: center;
         }
+
+        nav ul li a {
+            text-decoration: none;
+            color: #1d1d1f;
+            font-weight: 500;
+            font-size: 16px;
+            transition: color 0.3s ease;
+        }
+
+        nav ul li a:hover {
+            color: #007aff;
+        }
+
+        .user-section {
+            display: flex;
+            align-items: center;
+            gap: 16px;
+        }
+
+        .user-menu { position: relative; }
 
         .user-button {
             display: flex;
@@ -199,20 +159,9 @@
             font-size: 16px;
         }
 
-        .user-name {
-            font-weight: 600;
-            color: #1d1d1f;
-        }
-
-        .dropdown-arrow {
-            font-size: 12px;
-            color: #86868b;
-            transition: transform 0.3s ease;
-        }
-
-        .user-button.active .dropdown-arrow {
-            transform: rotate(180deg);
-        }
+        .user-name { font-weight: 600; color: #1d1d1f; }
+        .dropdown-arrow { font-size: 12px; color: #86868b; transition: transform 0.3s ease; }
+        .user-button.active .dropdown-arrow { transform: rotate(180deg); }
 
         .dropdown-menu {
             position: absolute;
@@ -246,29 +195,12 @@
             border-bottom: 1px solid #f5f5f7;
         }
 
-        .dropdown-item:first-child {
-            border-radius: 12px 12px 0 0;
-        }
+        .dropdown-item:last-child { color: #ff3b30; border-bottom: none; }
 
-        .dropdown-item:last-child {
-            border-radius: 0 0 12px 12px;
-            border-bottom: none;
-            color: #ff3b30;
-        }
+        .dropdown-item:hover { background: #f5f5f7; }
 
-        .dropdown-item:hover {
-            background: #f5f5f7;
-        }
-
-        main {
-            margin-top: 80px;
-        }
-
-        .container {
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 40px 24px;
-        }
+        main { margin-top: 80px; }
+        .container { max-width: 1200px; margin: 0 auto; padding: 40px 24px; }
 
         .welcome-section {
             background: #ffffff;
@@ -280,24 +212,13 @@
             text-align: center;
         }
 
-        .welcome-section h2 {
-            color: #1d1d1f;
-            font-size: 40px;
-            font-weight: 700;
-            margin-bottom: 16px;
-        }
-
-        .welcome-section p {
-            color: #86868b;
-            font-size: 18px;
-            margin-bottom: 0;
-        }
+        .welcome-section h2 { font-size: 40px; font-weight: 700; margin-bottom: 16px; }
+        .welcome-section p { color: #86868b; font-size: 18px; }
 
         .features-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
             gap: 24px;
-            margin-top: 40px;
         }
 
         .feature-card {
@@ -305,36 +226,12 @@
             padding: 32px;
             border-radius: 20px;
             box-shadow: 0 20px 40px rgba(0, 0, 0, 0.08);
-            border: 1px solid rgba(0, 0, 0, 0.05);
             text-align: center;
             transition: all 0.3s ease;
         }
 
-        .feature-card:hover {
-            transform: translateY(-4px);
-            box-shadow: 0 32px 64px rgba(0, 0, 0, 0.12);
-        }
-
-        .feature-icon {
-            font-size: 48px;
-            margin-bottom: 24px;
-            display: block;
-        }
-
-        .feature-card h3 {
-            color: #1d1d1f;
-            font-size: 24px;
-            font-weight: 700;
-            margin-bottom: 16px;
-        }
-
-        .feature-card p {
-            color: #86868b;
-            line-height: 1.6;
-            margin-bottom: 24px;
-            font-size: 16px;
-        }
-
+        .feature-card:hover { transform: translateY(-4px); }
+        .feature-icon { font-size: 48px; margin-bottom: 24px; display: block; }
         .feature-btn {
             background: #007aff;
             color: white;
@@ -342,81 +239,40 @@
             border-radius: 12px;
             text-decoration: none;
             font-weight: 600;
-            font-size: 16px;
             transition: all 0.3s ease;
-            display: inline-block;
         }
 
-        .feature-btn:hover {
-            background: #0056b3;
-            transform: translateY(-2px);
-            box-shadow: 0 12px 24px rgba(0, 122, 255, 0.3);
-        }
+        .feature-btn:hover { background: #0056b3; }
 
         @media (max-width: 768px) {
-            .header-content {
-                flex-direction: column;
-                gap: 20px;
-            }
-
-            .container {
-                padding: 20px 16px;
-            }
-
-            .welcome-section {
-                padding: 32px 24px;
-            }
-
-            .welcome-section h2 {
-                font-size: 32px;
-            }
-
-            .features-grid {
-                grid-template-columns: 1fr;
-                gap: 20px;
-            }
-
-            .feature-card {
-                padding: 24px 20px;
-            }
-        }
-
-        @media (max-width: 480px) {
-            .welcome-section {
-                padding: 24px 16px;
-            }
-
-            .welcome-section h2 {
-                font-size: 28px;
-            }
-
-            .feature-card {
-                padding: 20px 16px;
-            }
+            .header-content { flex-direction: column; gap: 20px; }
+            .features-grid { grid-template-columns: 1fr; }
         }
     </style>
 </head>
 <body>
+    <div class="background-shapes">
+        <div class="shape circle"></div><div class="shape square"></div><div class="shape circle"></div>
+        <div class="shape square"></div><div class="shape circle"></div><div class="shape square"></div>
+    </div>
+
+    <!-- HEADER importado da home.html -->
     <header>
         <div class="header-content">
             <a href="/" class="logo">
-                <img src="imagens/LogoConectaEdu.png" alt="Logo">
+                <img src="imagens/LogoConectaEdu.png" alt="logo">
                 <h1>ConectaEdu</h1>
             </a>
-            <div class="user-menu">
-                <div class="user-button" onclick="toggleDropdown()">
-                    <div class="user-avatar" id="userAvatar">U</div>
-                    <span class="user-name" id="userName">Carregando...</span>
-                    <span class="dropdown-arrow">▼</span>
-                </div>
-                <div class="dropdown-menu" id="dropdownMenu">
-                    <a href="/perfil" class="dropdown-item">
-                        <span>Configurar Perfil</span>
-                    </a>
-                    <a href="/sair" class="dropdown-item">
-                        <span>Sair da Conta</span>
-                    </a>
-                </div>
+            <nav>
+                <ul>
+                    <li><a href="/sobre">Sobre Nós</a></li>
+                    <li><a href="#" style="opacity: 0.5; cursor: not-allowed;" onclick="return false;">Cursos</a></li>
+                    <li><a href="/contato">Contato</a></li>
+                    <li><a href="#" style="opacity: 0.5; cursor: not-allowed;" onclick="return false;">Assistente Virtual</a></li>
+                </ul>
+            </nav>
+            <div class="user-section" id="userSection">
+                <!-- preenchido via JS -->
             </div>
         </div>
     </header>
@@ -429,76 +285,62 @@
             </div>
 
             <div class="features-grid">
-                <div class="feature-card">
-                    <span class="feature-icon">📚</span>
-                    <h3>Cursos Disponíveis</h3>
-                    <p>Acesse nossa biblioteca completa de cursos educacionais adaptados para diferentes necessidades de aprendizagem.</p>
-                    <a href="#" class="feature-btn">Explorar Cursos</a>
-                </div>
-
-                <div class="feature-card">
-                    <span class="feature-icon">🎯</span>
-                    <h3>Exercícios Interativos</h3>
-                    <p>Pratique seus conhecimentos com exercícios adaptativos que se ajustam ao seu ritmo de aprendizado.</p>
-                    <a href="#" class="feature-btn">Começar Exercícios</a>
-                </div>
-
-                <div class="feature-card">
-                    <span class="feature-icon">📊</span>
-                    <h3>Relatórios de Progresso</h3>
-                    <p>Acompanhe seu desenvolvimento educacional com relatórios detalhados e métricas de aprendizado.</p>
-                    <a href="#" class="feature-btn">Ver Relatórios</a>
-                </div>
-
-                <div class="feature-card">
-                    <span class="feature-icon">🤖</span>
-                    <h3>Assistente Virtual</h3>
-                    <p>Conte com nosso assistente inteligente para tirar dúvidas e receber orientações personalizadas.</p>
-                    <a href="#" class="feature-btn">Conversar</a>
-                </div>
-
-                <div class="feature-card">
-                    <span class="feature-icon">👥</span>
-                    <h3>Comunidade</h3>
-                    <p>Conecte-se com outros estudantes e educadores em nossa comunidade inclusiva de aprendizado.</p>
-                    <a href="#" class="feature-btn">Participar</a>
-                </div>
-
-                <div class="feature-card">
-                    <span class="feature-icon">⚙️</span>
-                    <h3>Configurações</h3>
-                    <p>Personalize sua experiência de aprendizado ajustando preferências e configurações de acessibilidade.</p>
-                    <a href="/perfil" class="feature-btn">Configurar</a>
-                </div>
+                <div class="feature-card"><span class="feature-icon">📚</span><h3>Cursos Disponíveis</h3><p>Acesse nossa biblioteca de cursos adaptados.</p></div>
+                <div class="feature-card"><span class="feature-icon">🎯</span><h3>Exercícios Interativos</h3><p>Pratique com exercícios adaptativos.</p></div>
+                <div class="feature-card"><span class="feature-icon">📊</span><h3>Relatórios de Progresso</h3><p>Acompanhe seu desenvolvimento.</p></div>
+                <div class="feature-card"><span class="feature-icon">🤖</span><h3>Assistente Virtual</h3><p>Conte com nosso assistente inteligente.</p></div>
+                <div class="feature-card"><span class="feature-icon">👥</span><h3>Comunidade</h3><p>Conecte-se com outros estudantes.</p></div>
+                <div class="feature-card"><span class="feature-icon">⚙️</span><h3>Configurações</h3><p>Personalize sua experiência.</p></div>
             </div>
         </div>
     </main>
 
     <script>
+        let usuarioLogado = false;
+        let nomeUsuario = '';
+        let corAvatar = '#007aff';
+
         fetch('/status')
-            .then(response => response.json())
+            .then(r => r.json())
             .then(data => {
-                if (data.logado && data.usuario) {
-                    document.getElementById('userName').textContent = data.usuario;
-                    const initial = data.usuario.charAt(0).toUpperCase();
-                    document.getElementById('userAvatar').textContent = initial;
-                    
+                usuarioLogado = data.logado;
+                nomeUsuario = data.usuario || '';
+                renderUserSection();
+
+                if (data.logado) {
                     fetch('/perfil/dados')
-                        .then(response => response.json())
-                        .then(profileData => {
-                            if (profileData && profileData.corAvatar) {
-                                document.getElementById('userAvatar').style.background = profileData.corAvatar;
+                        .then(r => r.json())
+                        .then(profile => {
+                            if (profile?.corAvatar) {
+                                corAvatar = profile.corAvatar;
+                                document.getElementById('userAvatar')?.style.setProperty('background', corAvatar);
                             }
-                        })
-                        .catch(error => console.log('Erro ao carregar dados do perfil:', error));
-                } else {
-                    window.location.href = '/login';
+                        });
                 }
             })
-            .catch(error => {
-                console.log('Erro ao verificar status:', error);
-                window.location.href = '/login';
-            });
+            .catch(() => renderUserSection());
+
+        function renderUserSection() {
+            const userSection = document.getElementById('userSection');
+            if (usuarioLogado) {
+                const initial = nomeUsuario.charAt(0).toUpperCase();
+                userSection.innerHTML = `
+                    <div class="user-menu">
+                        <div class="user-button" onclick="toggleDropdown()">
+                            <div class="user-avatar" id="userAvatar" style="background: ${corAvatar};">${initial}</div>
+                            <span class="user-name">${nomeUsuario}</span>
+                            <span class="dropdown-arrow">▼</span>
+                        </div>
+                        <div class="dropdown-menu" id="dropdownMenu">
+                            <a href="/plataforma" class="dropdown-item">Ir para Plataforma</a>
+                            <a href="/perfil" class="dropdown-item">Configurar Perfil</a>
+                            <a href="/sair" class="dropdown-item">Sair da Conta</a>
+                        </div>
+                    </div>`;
+            } else {
+                userSection.innerHTML = `<a href="/login" class="sign-up">Sign In</a>`;
+            }
+        }
 
         function toggleDropdown() {
             const dropdown = document.getElementById('dropdownMenu');
@@ -507,11 +349,11 @@
             button.classList.toggle('active');
         }
 
-        document.addEventListener('click', function(event) {
+        document.addEventListener('click', e => {
             const userMenu = document.querySelector('.user-menu');
-            if (!userMenu.contains(event.target)) {
-                document.getElementById('dropdownMenu').classList.remove('show');
-                document.querySelector('.user-button').classList.remove('active');
+            if (userMenu && !userMenu.contains(e.target)) {
+                document.getElementById('dropdownMenu')?.classList.remove('show');
+                document.querySelector('.user-button')?.classList.remove('active');
             }
         });
     </script>

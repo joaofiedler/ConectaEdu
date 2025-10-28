@@ -1,10 +1,7 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
-    <link
-    rel="icon"
-    href="imagens/LogoConectaEdu.png"
-    type="image/png">
+    <link rel="icon" href="imagens/LogoConectaEdu.png" type="image/png">
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>ConectaEdu</title>
@@ -23,106 +20,106 @@
         }
 
         .background-shapes {
-      position: fixed;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      z-index: 0;
-      pointer-events: none;
-      overflow: hidden;
-    }
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: 0;
+            pointer-events: none;
+            overflow: hidden;
+        }
 
-    .shape {
-      position: absolute;
-      opacity: 0.15;
-      animation: float 20s infinite ease-in-out;
-      will-change: transform;
-    }
+        .shape {
+            position: absolute;
+            opacity: 0.15;
+            animation: float 20s infinite ease-in-out;
+            will-change: transform;
+        }
 
-    .shape.circle {
-      border-radius: 50%;
-      background: linear-gradient(135deg, #007aff, #0056b3);
-    }
+        .shape.circle {
+            border-radius: 50%;
+            background: linear-gradient(135deg, #007aff, #0056b3);
+        }
 
-    .shape.square {
-      background: linear-gradient(135deg, #007aff, #0056b3);
-      border-radius: 20px;
-    }
+        .shape.square {
+            background: linear-gradient(135deg, #007aff, #0056b3);
+            border-radius: 20px;
+        }
 
-    .shape:nth-child(1) {
-      width: 300px;
-      height: 300px;
-      top: 10%;
-      left: 5%;
-      animation-delay: 0s;
-      animation-duration: 25s;
-    }
+        .shape:nth-child(1) {
+            width: 300px;
+            height: 300px;
+            top: 10%;
+            left: 5%;
+            animation-delay: 0s;
+            animation-duration: 25s;
+        }
 
-    .shape:nth-child(2) {
-      width: 200px;
-      height: 200px;
-      top: 60%;
-      right: 10%;
-      animation-delay: 3s;
-      animation-duration: 20s;
-    }
+        .shape:nth-child(2) {
+            width: 200px;
+            height: 200px;
+            top: 60%;
+            right: 10%;
+            animation-delay: 3s;
+            animation-duration: 20s;
+        }
 
-    .shape:nth-child(3) {
-      width: 150px;
-      height: 150px;
-      bottom: 15%;
-      left: 15%;
-      animation-delay: 6s;
-      animation-duration: 30s;
-    }
+        .shape:nth-child(3) {
+            width: 150px;
+            height: 150px;
+            bottom: 15%;
+            left: 15%;
+            animation-delay: 6s;
+            animation-duration: 30s;
+        }
 
-    .shape:nth-child(4) {
-      width: 250px;
-      height: 250px;
-      top: 40%;
-      right: 20%;
-      animation-delay: 9s;
-      animation-duration: 22s;
-    }
+        .shape:nth-child(4) {
+            width: 250px;
+            height: 250px;
+            top: 40%;
+            right: 20%;
+            animation-delay: 9s;
+            animation-duration: 22s;
+        }
 
-    .shape:nth-child(5) {
-      width: 180px;
-      height: 180px;
-      top: 70%;
-      left: 40%;
-      animation-delay: 12s;
-      animation-duration: 28s;
-    }
+        .shape:nth-child(5) {
+            width: 180px;
+            height: 180px;
+            top: 70%;
+            left: 40%;
+            animation-delay: 12s;
+            animation-duration: 28s;
+        }
 
-    .shape:nth-child(6) {
-      width: 220px;
-      height: 220px;
-      top: 20%;
-      right: 35%;
-      animation-delay: 15s;
-      animation-duration: 26s;
-    }
+        .shape:nth-child(6) {
+            width: 220px;
+            height: 220px;
+            top: 20%;
+            right: 35%;
+            animation-delay: 15s;
+            animation-duration: 26s;
+        }
 
-    @keyframes float {
-      0%, 100% {
-        transform: translate(0, 0) rotate(0deg);
-      }
-      25% {
-        transform: translate(30px, -30px) rotate(90deg);
-      }
-      50% {
-        transform: translate(-20px, 20px) rotate(180deg);
-      }
-      75% {
-        transform: translate(20px, 30px) rotate(270deg);
-      }
-    }
+        @keyframes float {
+            0%, 100% {
+                transform: translate(0, 0) rotate(0deg);
+            }
+            25% {
+                transform: translate(30px, -30px) rotate(90deg);
+            }
+            50% {
+                transform: translate(-20px, 20px) rotate(180deg);
+            }
+            75% {
+                transform: translate(20px, 30px) rotate(270deg);
+            }
+        }
 
-    header, main, footer {
-      position: relative;
-      z-index: 1;
-    }
+        header, main, footer {
+            position: relative;
+            z-index: 1;
+        }
 
         header {
             background: rgba(255, 255, 255, 0.8);
@@ -182,6 +179,107 @@
 
         nav ul li a:hover {
             color: #007aff;
+        }
+
+        .user-section {
+            display: flex;
+            align-items: center;
+            gap: 16px;
+        }
+
+        .user-menu {
+            position: relative;
+        }
+
+        .user-button {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            background: #ffffff;
+            border: 2px solid #e5e5e7;
+            padding: 10px 20px;
+            border-radius: 12px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .user-button:hover {
+            border-color: #007aff;
+            box-shadow: 0 4px 12px rgba(0, 122, 255, 0.15);
+        }
+
+        .user-avatar {
+            width: 36px;
+            height: 36px;
+            border-radius: 50%;
+            background: #007aff;
+            color: white;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 700;
+            font-size: 16px;
+        }
+
+        .user-name {
+            font-weight: 600;
+            color: #1d1d1f;
+        }
+
+        .dropdown-arrow {
+            font-size: 12px;
+            color: #86868b;
+            transition: transform 0.3s ease;
+        }
+
+        .user-button.active .dropdown-arrow {
+            transform: rotate(180deg);
+        }
+
+        .dropdown-menu {
+            position: absolute;
+            top: calc(100% + 8px);
+            right: 0;
+            background: #ffffff;
+            border-radius: 12px;
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15);
+            border: 1px solid rgba(0, 0, 0, 0.05);
+            min-width: 220px;
+            opacity: 0;
+            visibility: hidden;
+            transform: translateY(-10px);
+            transition: all 0.3s ease;
+        }
+
+        .dropdown-menu.show {
+            opacity: 1;
+            visibility: visible;
+            transform: translateY(0);
+        }
+
+        .dropdown-item {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            padding: 14px 20px;
+            color: #1d1d1f;
+            text-decoration: none;
+            transition: background 0.2s ease;
+            border-bottom: 1px solid #f5f5f7;
+        }
+
+        .dropdown-item:first-child {
+            border-radius: 12px 12px 0 0;
+        }
+
+        .dropdown-item:last-child {
+            border-radius: 0 0 12px 12px;
+            border-bottom: none;
+            color: #ff3b30;
+        }
+
+        .dropdown-item:hover {
+            background: #f5f5f7;
         }
 
         .sign-up {
@@ -364,6 +462,15 @@
     </style>
 </head>
 <body>
+    <div class="background-shapes">
+        <div class="shape circle"></div>
+        <div class="shape square"></div>
+        <div class="shape circle"></div>
+        <div class="shape square"></div>
+        <div class="shape circle"></div>
+        <div class="shape square"></div>
+    </div>
+    
     <header>
         <div class="header-content">
             <a href="/" class="logo">
@@ -378,7 +485,9 @@
                     <li><a href="#" style="opacity: 0.5; cursor: not-allowed;" onclick="return false;">Assistente Virtual</a></li>
                 </ul>
             </nav>
-            <a href="#" class="sign-up" id="signInBtn" onclick="handleSignIn(); return false;">Sign In</a>
+            <div class="user-section" id="userSection">
+                <!-- Será preenchido via JavaScript -->
+            </div>
         </div>
     </header>
 
@@ -405,27 +514,68 @@
     <script>
         let usuarioLogado = false;
         let nomeUsuario = '';
+        let corAvatar = '#007aff';
 
+        // Carregar status do usuário
         fetch('/status')
             .then(response => response.json())
             .then(data => {
                 usuarioLogado = data.logado;
                 nomeUsuario = data.usuario || '';
+                renderUserSection();
                 
                 if (data.logado) {
-                    const headerContent = document.querySelector('.header-content');
-                    const userInfo = document.createElement('div');
-                    userInfo.innerHTML = `<span style="color: #007aff; font-weight: 600; font-size: 16px;">Olá, ${data.usuario}!</span>`;
-                    headerContent.insertBefore(userInfo, headerContent.querySelector('nav'));
-                    
-                    const signUpBtn = document.getElementById('signInBtn');
-                    signUpBtn.textContent = 'Sair';
-                    signUpBtn.href = '/sair';
+                    // Carregar dados do perfil para pegar a cor do avatar
+                    fetch('/perfil/dados')
+                        .then(response => response.json())
+                        .then(profileData => {
+                            if (profileData && profileData.corAvatar) {
+                                corAvatar = profileData.corAvatar;
+                                const avatar = document.getElementById('userAvatar');
+                                if (avatar) {
+                                    avatar.style.background = corAvatar;
+                                }
+                            }
+                        })
+                        .catch(error => console.log('Erro ao carregar dados do perfil:', error));
                 }
             })
             .catch(error => {
                 console.log('Erro ao verificar status:', error);
+                renderUserSection();
             });
+
+        function renderUserSection() {
+            const userSection = document.getElementById('userSection');
+            
+            if (usuarioLogado) {
+                const initial = nomeUsuario.charAt(0).toUpperCase();
+                userSection.innerHTML = `
+                    <div class="user-menu">
+                        <div class="user-button" onclick="toggleDropdown()">
+                            <div class="user-avatar" id="userAvatar" style="background: ${corAvatar};">${initial}</div>
+                            <span class="user-name">${nomeUsuario}</span>
+                            <span class="dropdown-arrow">▼</span>
+                        </div>
+                        <div class="dropdown-menu" id="dropdownMenu">
+                            <a href="/plataforma" class="dropdown-item">
+                                <span>Ir para Plataforma</span>
+                            </a>
+                            <a href="/perfil" class="dropdown-item">
+                                <span>Configurar Perfil</span>
+                            </a>
+                            <a href="/sair" class="dropdown-item">
+                                <span>Sair da Conta</span>
+                            </a>
+                        </div>
+                    </div>
+                `;
+            } else {
+                userSection.innerHTML = `
+                    <a href="/login" class="sign-up">Sign In</a>
+                `;
+            }
+        }
 
         function acessarPlataforma() {
             if (usuarioLogado) {
@@ -435,14 +585,25 @@
             }
         }
 
-        function handleSignIn() {
-            if (usuarioLogado) {
-                window.location.href = '/sair';
-            } else {
-                window.location.href = '/login';
-            }
+        function toggleDropdown() {
+            const dropdown = document.getElementById('dropdownMenu');
+            const button = document.querySelector('.user-button');
+            dropdown.classList.toggle('show');
+            button.classList.toggle('active');
         }
 
+        // Fechar dropdown ao clicar fora
+        document.addEventListener('click', function(event) {
+            const userMenu = document.querySelector('.user-menu');
+            if (userMenu && !userMenu.contains(event.target)) {
+                const dropdown = document.getElementById('dropdownMenu');
+                const button = document.querySelector('.user-button');
+                if (dropdown) dropdown.classList.remove('show');
+                if (button) button.classList.remove('active');
+            }
+        });
+
+        // Scroll suave para âncoras
         document.querySelectorAll('a[href^="#"]').forEach(anchor => {
             anchor.addEventListener('click', function (e) {
                 e.preventDefault();

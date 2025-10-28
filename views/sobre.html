@@ -192,6 +192,20 @@
       font-weight: 600;
     }
 
+    .user-section{display:flex;align-items:center;gap:16px;}
+    .user-menu{position:relative;}
+    .user-button{display:flex;align-items:center;gap:12px;background:#fff;border:2px solid #e5e5e7;padding:10px 20px;border-radius:12px;cursor:pointer;transition:all 0.3s ease;}
+    .user-button:hover{border-color:#007aff;box-shadow:0 4px 12px rgba(0,122,255,0.15);}
+    .user-avatar{width:36px;height:36px;border-radius:50%;background:#007aff;color:#fff;display:flex;align-items:center;justify-content:center;font-weight:700;font-size:16px;}
+    .user-name{font-weight:600;color:#1d1d1f;}
+    .dropdown-arrow{font-size:12px;color:#86868b;transition:transform 0.3s ease;}
+    .user-button.active .dropdown-arrow{transform:rotate(180deg);}
+    .dropdown-menu{position:absolute;top:calc(100% + 8px);right:0;background:#fff;border-radius:12px;box-shadow:0 20px 40px rgba(0,0,0,0.15);border:1px solid rgba(0,0,0,0.05);min-width:220px;opacity:0;visibility:hidden;transform:translateY(-10px);transition:all 0.3s ease;}
+    .dropdown-menu.show{opacity:1;visibility:visible;transform:translateY(0);}
+    .dropdown-item{display:flex;align-items:center;gap:12px;padding:14px 20px;color:#1d1d1f;text-decoration:none;transition:background 0.2s ease;border-bottom:1px solid #f5f5f7;}
+    .dropdown-item:last-child{color:#ff3b30;border-bottom:none;}
+    .dropdown-item:hover{background:#f5f5f7;}
+
     main {
       margin-top: 80px;
       min-height: calc(100vh - 80px);
@@ -429,6 +443,7 @@
     <div class="shape square"></div>
   </div>
 
+  <!-- HEADER dinâmico igual ao da home -->
   <header>
     <div class="header-content">
       <a href="/" class="logo">
@@ -443,6 +458,7 @@
           <li><a href="#" style="opacity: 0.5; cursor: not-allowed;" onclick="return false;">Assistente Virtual</a></li>
         </ul>
       </nav>
+      <div class="user-section" id="userSection"></div>
     </div>
   </header>
 
@@ -514,8 +530,73 @@
     </div>
   </main>
 
+  
   <footer>
     <p>©2025 ConectaEdu. All rights reserved.</p>
   </footer>
+
+  <script>
+    let usuarioLogado = false;
+    let nomeUsuario = '';
+    let corAvatar = '#007aff';
+
+    fetch('/status')
+        .then(r => r.json())
+        .then(data => {
+            usuarioLogado = data.logado;
+            nomeUsuario = data.usuario || '';
+            renderUserSection();
+
+            if (data.logado) {
+                fetch('/perfil/dados')
+                    .then(r => r.json())
+                    .then(profile => {
+                        if (profile?.corAvatar) {
+                            corAvatar = profile.corAvatar;
+                            document.getElementById('userAvatar')?.style.setProperty('background', corAvatar);
+                        }
+                    });
+            }
+        })
+        .catch(() => renderUserSection());
+
+    function renderUserSection() {
+        const userSection = document.getElementById('userSection');
+        if (usuarioLogado) {
+            const initial = nomeUsuario.charAt(0).toUpperCase();
+            userSection.innerHTML = `
+                <div class="user-menu">
+                    <div class="user-button" onclick="toggleDropdown()">
+                        <div class="user-avatar" id="userAvatar" style="background: ${corAvatar};">${initial}</div>
+                        <span class="user-name">${nomeUsuario}</span>
+                        <span class="dropdown-arrow">▼</span>
+                    </div>
+                    <div class="dropdown-menu" id="dropdownMenu">
+                        <a href="/plataforma" class="dropdown-item">Ir para Plataforma</a>
+                        <a href="/perfil" class="dropdown-item">Configurar Perfil</a>
+                        <a href="/sair" class="dropdown-item">Sair da Conta</a>
+                    </div>
+                </div>`;
+        } else {
+            userSection.innerHTML = `<a href="/login" class="sign-up">Sign In</a>`;
+        }
+    }
+
+    function toggleDropdown() {
+        const dropdown = document.getElementById('dropdownMenu');
+        const button = document.querySelector('.user-button');
+        dropdown.classList.toggle('show');
+        button.classList.toggle('active');
+    }
+
+    document.addEventListener('click', e => {
+        const userMenu = document.querySelector('.user-menu');
+        if (userMenu && !userMenu.contains(e.target)) {
+            document.getElementById('dropdownMenu')?.classList.remove('show');
+            document.querySelector('.user-button')?.classList.remove('active');
+        }
+    });
+</script>
+
 </body>
 </html>
